@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite1" parallel="tests" thread-count="10">
+<groups>
+        <run>
+            <exclude name="Later"/>
+        </run>
+    </groups>
+  <test  name="ParallelTestonChrome">
+  <parameter name= "browser" value="chrome"></parameter>
+    <classes>
+      <class name="Linga.ChromeAndIncognino"/>
+    </classes>
+  </test> <!-- ParallelTest -->
+  <test  name="ParallelTestOnincognito">
+  <parameter name= "browser" value="incognito"></parameter>
+    <classes>
+      <class name="Linga.ChromeAndIncognino"/>
+    </classes>
+  </test> <!-- ParallelTest -->
+</suite> <!-- Suite1 -->

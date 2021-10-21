@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="10" guice-stage="DEVELOPMENT" name="Failed suite [Suite1]" parallel="tests">
+  <test thread-count="10" name="ParallelTestOnincognito(failed)" parallel="tests">
+    <parameter name="browser" value="incognito"/>
+    <groups>
+      <run>
+        <exclude name="Later"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="Linga.ChromeAndIncognino">
+        <methods>
+          <include name="QSR_Check_Close_Available_Or_Not"/>
+          <include name="flushTest"/>
+          <include name="QSR_PlaceMenu_DoManual_Hold_DoPayment_ClickYesForHoldCheckPopup_CloseCheck"/>
+          <include name="QSR_Check_Close"/>
+        </methods>
+      </class> <!-- Linga.ChromeAndIncognino -->
+    </classes>
+  </test> <!-- ParallelTestOnincognito(failed) -->
+  <test thread-count="10" name="ParallelTestonChrome(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <exclude name="Later"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="Linga.ChromeAndIncognino">
+        <methods>
+          <include name="QSR_Check_Close_Available_Or_Not"/>
+          <include name="flushTest"/>
+          <include name="QSR_PlaceMenu_DoManual_Hold_DoPayment_ClickYesForHoldCheckPopup_CloseCheck"/>
+        </methods>
+      </class> <!-- Linga.ChromeAndIncognino -->
+    </classes>
+  </test> <!-- ParallelTestonChrome(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

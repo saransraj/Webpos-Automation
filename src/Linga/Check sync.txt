@@ -1,0 +1,378 @@
+package Lingapos;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class FirstTestNGClass 
+{
+	  WebDriver driver;
+	  String activecheckno, closecheckno, voidcheckno, holdcheckno, Mergecheckno, servercheckno, tablecheckno, itemcheckno1, itemcheckno2, dinecheckno, bartabcheckno, TOGOcheckno, outcheckno, paymentcheckno;
+
+  /*@Test
+  public void f() {
+	  System.out.println("Hello world");
+	    
+  }*/
+  @BeforeTest
+  public void h() throws Exception {
+	  System.out.println("Yeap me");
+		System.setProperty("webdriver.chrome.driver","D:\\Selenium\\chrome\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.get("http://web.lingapos.com");
+		Thread.sleep(10000);
+		driver.findElement(By.id("mat-input-0")).sendKeys("shivam@mail.com");
+		driver.findElement(By.id("mat-input-1")).sendKeys("shivam1");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath(".//*[text()=\"Login\"]")).click();
+		Thread.sleep(5000);
+
+		for (int i = 0; i < 4; i++){
+			driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+			  Thread.sleep(1000);
+			  }
+		  driver.findElement(By.xpath(".//*[text()=\"Login\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Cancel\"]")).click();
+		  //QSR_Order_DinIN_T1_Activecheck
+		  this.activecheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Order\"]")).click();
+		  driver.findElement(By.xpath(".//*[contains(@class,'mat-focus-indicator mat-menu-trigger o')]")).click();
+		  driver.findElement(By.xpath("(.//*[contains(@class,'mat-focus-indicator order-header')])[2]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T1 \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  //Closed_check_reflection
+		  driver.findElement(By.xpath(".//*[text()=\"T2 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  this.closecheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();		  
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath(".//*[text()=\"Payment\"]")).click();
+		  driver.findElement(By.xpath("(.//*[text()=\"Cash\"])[2]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Submit\"]")).click();
+		  //Void_check_reflection
+		  driver.findElement(By.xpath("//*[text()=\" QSR \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Cancel\"]")).click();
+		  this.voidcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath("//*[text()=\"Order\"]")).click();
+		  driver.findElement(By.xpath("//*[text()=\"Void\"]")).click();
+		  driver.findElement(By.tagName("textarea")).sendKeys("Saran Here");
+		  driver.findElement(By.xpath("(//*[@class=\"voidfooter-grd-voidfooterbutton\"])[2]")).click();
+		  //Hold_check_reflection
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath("//*[text()=\"Done\"]")).click();
+		  this.holdcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[@class=\"p-col-5 orderlist-menuname\" and text()=\"Chai\" ] ")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Hold\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Done\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"All\"]")).click();
+		  
+		 //Merge_2_checks
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath("//*[text()=\" QSR \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Cancel\"]")).click();
+		  driver.findElement(By.xpath(".//*[contains(@class,'mat-focus-indicator mat-menu-trigger o')]")).click();
+		  driver.findElement(By.xpath("(.//*[contains(@class,'mat-focus-indicator order-header')])[2]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T3 \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.Mergecheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"T4 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Merge\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"T3 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"T4 \"]")).click();
+		  driver.findElement(By.xpath(".//*[@class=\"tabletransfer-headrow-colrit-done\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Done\"]")).click();
+		  
+		  //Transfer_check_by_server
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T5 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.servercheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Transfer\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Shivam 1\" and @class=\"sc-ion-label-md-h sc-ion-label-md-s md hydrated\"]")).click();
+		  driver.findElement(By.xpath(".//div/p[contains(.,'"+servercheckno+"')]")).click();
+		  driver.findElement(By.xpath("(.//*[text()=\"Manager 2\"])[2]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Yes\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\" Done \"]")).click();
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath(".//*[text()=\"Done\"]")).click();
+
+
+		  //Transfer_check_by_table
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"T6 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.tablecheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Transfer\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Transfer to Table\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Floor 1-T6\"]")).click();
+		  driver.findElement(By.xpath(".//div/p[contains(.,'"+tablecheckno+"')]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"  - Floor 2-T1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\" Done \"]")).click();
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath(".//*[text()=\"Done\"]")).click();
+
+		  //Transfer_check_by_item
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"T7 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.itemcheckno1 = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"T8 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.itemcheckno2 = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Transfer\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Transfer item\"]")).click();
+		  driver.findElement(By.xpath(".//div/ion-label[contains(.,'"+itemcheckno1+"')]")).click();
+		  driver.findElement(By.xpath("(.//*[@class=\"ion-no-padding md hydrated\"])[2]")).click();
+		  driver.findElement(By.xpath("(.//div/ion-label[contains(.,'"+itemcheckno2+"')])[2]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\" Done \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Yes\"]")).click();
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath(".//*[text()=\"Done\"]")).click();
+		  
+		  //DineIN_Table_change
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T9 \"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Continue\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"T9 \"]")).click();
+		  driver.findElement(By.xpath(".//*[contains(@class,'mat-focus-indicator mat-menu-trigger o')]")).click();
+		  driver.findElement(By.xpath("(.//*[contains(@class,'mat-focus-indicator order-header')])[2]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T10 \"]")).click();
+		  this.dinecheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  
+		  //Bartab_check
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"BarTab\"]")).click();
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath(".//*[text()=\"New Check\"]")).click();
+		  this.bartabcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  
+		  //Phone_order_TOGO_check
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath("//*[text()=\" QSR \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath("//*[text()=\"Done\"]")).click();
+		  this.TOGOcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(3000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  
+		  //Phone_order_Delivery_out_check
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath("//*[text()=\" QSR \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath("(.//*[text()=\"DELIVERY\"])[1]")).click();
+		  driver.findElement(By.xpath("//*[text()=\"Done\"]")).click();
+		  Thread.sleep(3000);
+		  driver.findElement(By.xpath(".//*[contains(@class,'mat-input-element mat-form-field-autofill-control mat-a')]")).sendKeys("chinnu saran");
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath(".//*[contains(@class,\"mat-option-text\") and contains(text(),'Chinnu saran 9875555555' )]")).click();
+		  Thread.sleep(3000);
+
+
+		  driver.findElement(By.xpath(".//*[text()=\"Save\"]")).click();
+		  Thread.sleep(3000);
+
+		  this.outcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(1000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  System.out.println(this.outcheckno);	
+
+		  Thread.sleep(3000);
+
+		  driver.findElement(By.xpath("//td[contains(.,'"+outcheckno+"')]/..")).click();
+		  driver.findElement(By.xpath("(.//*[text() =\" Driver 4 \"])[2]")).click();
+		  driver.findElement(By.xpath(".//*[text() =\"Yes\"]")).click();
+		  driver.findElement(By.xpath("(.//*[text() =\" Driver 4 \"])[2]")).click();
+		  driver.findElement(By.xpath(".//*[text()=\"Departure\"]")).click();
+		  
+		  //Check_Reopen
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath(".//*[text()= \"Check Status\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()= \"Closed\"]")).click();
+		  driver.findElement(By.xpath(".//tr/td[contains(.,'"+closecheckno+"')]")).click();		
+		  driver.findElement(By.xpath(".//*[text()= \" Re-open Check \"]")).click();
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath(".//*[text()=\"Finish\"]")).click();
+		  
+		  //check_open_payment
+		  Thread.sleep(2000);
+
+		  driver.findElement(By.xpath("//*[text()=\" QSR \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Cancel\"]")).click();
+		  driver.findElement(By.xpath(".//*[contains(@class,'mat-focus-indicator mat-menu-trigger o')]")).click();
+		  driver.findElement(By.xpath("(.//*[contains(@class,'mat-focus-indicator order-header')])[2]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"T10 \"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  this.paymentcheckno = driver.findElement(By.xpath(".//*[@class=\"order-header-checkno\"]")).getText();		  driver.findElement(By.xpath(".//*[text()=\"Chai\"]")).click();
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath(".//*[text()= \"Payment\"]")).click();
+		  driver.findElement(By.xpath(".//*[text()= \"Others\"]")).click();
+
+		  
+  }
+  @AfterTest
+  public void k() throws Exception {
+	  System.out.println("Bye");
+	  driver.close();
+
+	    
+  }
+  @Test(priority = 0)
+  public void case1() throws InterruptedException {
+	  System.out.println("Take care");
+	  System.out.println(this.activecheckno);	
+	  System.out.println(this.closecheckno);	
+	  System.out.println(this.voidcheckno);	
+	  System.out.println(this.holdcheckno);	
+	  System.out.println(this.Mergecheckno);	
+	  System.out.println(this.servercheckno);	
+	  System.out.println(this.tablecheckno);	
+	  System.out.println(this.itemcheckno1);	
+	  System.out.println(this.itemcheckno2);	
+	  System.out.println(this.dinecheckno);	
+	  System.out.println(this.bartabcheckno);	
+	  System.out.println(this.TOGOcheckno);	
+	  System.out.println(this.outcheckno);	
+	  System.out.println(this.paymentcheckno);	
+
+			  
+
+			  
+			 /* System.setProperty("webdriver.gecko.driver","D:\\Selenium\\Mozilla\\geckodriver-v0.28.0-win64\\geckodriver.exe");
+			  driver = new FirefoxDriver();
+			  driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+				driver.get("http://web.lingapos.com");
+				Thread.sleep(10000);
+				driver.findElement(By.id("mat-input-0")).sendKeys("shivam@mail.com");
+				driver.findElement(By.id("mat-input-1")).sendKeys("shivam1");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath(".//*[text()=\"Login\"]")).click();
+				Thread.sleep(5000);
+
+				for (int i = 0; i < 4; i++){
+					driver.findElement(By.xpath(".//*[text()=\"1\"]")).click();
+					  Thread.sleep(1000);
+					  }
+				  driver.findElement(By.xpath(".//*[text()=\"Login\"]")).click();
+				  Thread.sleep(2000);
+				 
+				  
+				  driver.findElement(By.xpath(".//*[text()=\"Cancel\"]")).click();
+				  driver.findElement(By.xpath(".//*[text()=\"All\"]")).click();
+				  String activechecks = driver.findElement(By.xpath(".//tr/td[contains(.,'"+this.activecheckno+"')]")).getText();
+				 /* JavascriptExecutor js = (JavascriptExecutor) driver;
+				  WebElement active = driver.findElement(By.xpath(".//tr/td[contains(.,'"+this.activecheckno+"')]"));
+			        js.executeScript("arguments[0].scrollIntoView();", active);
+			        active.getText();
+			        String activechecks = String.valueOf(active);
+			        System.out.println(activechecks);*/
+				/*  driver.findElement(By.xpath(".//*[text()=\"Table layout\"]")).click();
+				  driver.findElement(By.xpath(".//*[text()=\"T2 \"]")).click();
+				  try{
+					  
+					  WebElement element = driver.findElement(By.xpath(".//mat-dialog-container//app-alertcontent//mat-dialog-content//p[@class=\"alert-msg ng-star-inserted\"]"));
+			 System.out.println("Test case 1 - Popups occurs");
+			        }catch (Exception e){
+			 		 
+			   		 System.out.println("Sorry try again..!");
+			 
+			        }
+				  Thread.sleep(2000);
+
+				  //driver.close();
+  }
+  @Test(priority = 1)
+  public void case2() throws Exception {
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath(".//*[text()=\"No\"]")).click();
+	  driver.findElement(By.xpath(".//*[text()=\"T2 \"]")).click();
+	  driver.findElement(By.xpath(".//mat-dialog-container//app-alertcontent//mat-dialog-content//p[@class=\"alert-msg ng-star-inserted\"]"));
+	  */
+  }
+}
+
